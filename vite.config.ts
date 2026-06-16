@@ -168,6 +168,18 @@ export default defineConfig({
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
   },
+  optimizeDeps: {
+    force: false,
+    include: [
+      'react',
+      'react-dom',
+      'react-dom/client',
+      '@trpc/client',
+      '@trpc/react-query',
+      '@tanstack/react-query',
+      'superjson',
+    ],
+  },
   server: {
     host: true,
     allowedHosts: [

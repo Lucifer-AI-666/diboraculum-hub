@@ -1,0 +1,44 @@
+{
+  "name": "Diboraculum Hub",
+  "short_name": "DIB HUB",
+  "description": "Unified Intelligence Platform — AI, CyberSec, OSINT",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050a0f",
+  "theme_color": "#00ff88",
+  "orientation": "any",
+  "categories": ["productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/manus-storage/icon-192_c5d57731.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/manus-storage/icon-512_d6e3097a.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Chat AI",
+      "url": "/dashboard/chat",
+      "description": "Open AI Chat"
+    },
+    {
+      "name": "Tauros Sentinel",
+      "url": "/dashboard/sentinel",
+      "description": "CyberSec Scanner"
+    },
+    {
+      "name": "Oraculum OSINT",
+      "url": "/dashboard/oraculum",
+      "description": "OSINT Tools"
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}
