@@ -82,16 +82,17 @@ export default function VipLogin() {
       </div>
 
       <div className="w-full max-w-lg relative z-10">
-        {/* Header */}
+        {/* Header - SEO H1/H2 */}
         <div className="text-center mb-8">
           <div className="inline-block mb-4">
-            <div className="text-5xl font-bold tracking-widest neon-green"
-              style={{ fontFamily: "'Orbitron', monospace" }}>
+            <h1 className="text-5xl font-bold tracking-widest"
+              style={{ fontFamily: "'Orbitron', monospace", color: "oklch(0.85 0.01 0)" }}>
               DIB
-            </div>
-            <div className="text-xs tracking-[0.4em] neon-cyan mt-1 uppercase">
-              Oraculum Hub
-            </div>
+            </h1>
+            <h2 className="text-xs tracking-[0.4em] mt-1 uppercase"
+              style={{ color: "oklch(0.70 0.01 0)" }}>
+              Piattaforma AI, CyberSec e OSINT
+            </h2>
           </div>
         </div>
 

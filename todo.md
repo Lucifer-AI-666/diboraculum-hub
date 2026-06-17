@@ -79,3 +79,14 @@
 - [x] Frontend: polling in tempo reale delle versioni disponibili su npm registry
 - [x] Frontend: pulsante "Update All" e "Update Single" con log streaming live
 - [x] Frontend: badge "outdated" / "up-to-date" / "major update" per ogni dipendenza
+
+## Autenticazione OAuth2 Social
+
+- [ ] Backend: configurare Google OAuth2 (Gmail) con client_id/secret
+- [ ] Backend: configurare GitHub OAuth2 con client_id/secret
+- [ ] Backend: endpoint /api/auth/google e /api/auth/github per redirect OAuth
+- [ ] Backend: endpoint /api/auth/callback per gestire il token e creare sessione JWT
+- [ ] Frontend: pagina login con pulsanti "Accedi con Google" e "Accedi con GitHub"
+- [ ] Frontend: rimuovere il vecchio login con codice VIP
+- [ ] Frontend: aggiornare VipContext per usare la sessione OAuth2
+- [ ] Frontend: protezione route basata su sessione OAuth2
