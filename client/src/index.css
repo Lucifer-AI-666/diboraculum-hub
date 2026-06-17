@@ -4,85 +4,84 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
-   DIBORACULUM HUB — CYBERPUNK DESIGN SYSTEM
+   DIBORACULUM HUB — MONOCHROME TERMINAL DESIGN SYSTEM
+   Palette: Black / White / Grey — no color
    ============================================================ */
 
 @theme inline {
-  /* Cyberpunk color palette — Tailwind v4 uses --color-* to generate utilities */
-  --color-background: oklch(0.06 0.01 240);
-  --color-foreground: oklch(0.92 0.05 160);
+  /* Monochrome palette */
+  --color-background: oklch(0.06 0 0);
+  --color-foreground: oklch(0.92 0 0);
 
-  --color-card: oklch(0.09 0.015 240);
-  --color-card-foreground: oklch(0.90 0.04 160);
+  --color-card: oklch(0.10 0 0);
+  --color-card-foreground: oklch(0.88 0 0);
 
-  --color-popover: oklch(0.08 0.015 240);
-  --color-popover-foreground: oklch(0.90 0.04 160);
+  --color-popover: oklch(0.09 0 0);
+  --color-popover-foreground: oklch(0.88 0 0);
 
-  /* Neon green primary */
-  --color-primary: oklch(0.75 0.22 155);
-  --color-primary-foreground: oklch(0.06 0.01 240);
+  /* White primary */
+  --color-primary: oklch(0.95 0 0);
+  --color-primary-foreground: oklch(0.06 0 0);
 
-  /* Neon cyan secondary */
-  --color-secondary: oklch(0.70 0.18 200);
-  --color-secondary-foreground: oklch(0.06 0.01 240);
+  /* Mid-grey secondary */
+  --color-secondary: oklch(0.22 0 0);
+  --color-secondary-foreground: oklch(0.88 0 0);
 
-  --color-muted: oklch(0.12 0.02 240);
-  --color-muted-foreground: oklch(0.55 0.05 200);
+  --color-muted: oklch(0.14 0 0);
+  --color-muted-foreground: oklch(0.50 0 0);
 
-  /* Neon accent cyan */
-  --color-accent: oklch(0.65 0.20 195);
-  --color-accent-foreground: oklch(0.06 0.01 240);
+  /* Light grey accent */
+  --color-accent: oklch(0.28 0 0);
+  --color-accent-foreground: oklch(0.92 0 0);
 
-  /* Danger red */
-  --color-destructive: oklch(0.65 0.25 25);
-  --color-destructive-foreground: oklch(0.98 0.01 0);
+  /* Red for destructive — only color allowed */
+  --color-destructive: oklch(0.60 0.20 25);
+  --color-destructive-foreground: oklch(0.98 0 0);
 
-  --color-border: oklch(0.20 0.05 200);
-  --color-input: oklch(0.12 0.02 240);
-  --color-ring: oklch(0.75 0.22 155);
+  --color-border: oklch(0.22 0 0);
+  --color-input: oklch(0.12 0 0);
+  --color-ring: oklch(0.60 0 0);
 
-  /* Chart colors */
-  --color-chart-1: oklch(0.75 0.22 155);
-  --color-chart-2: oklch(0.70 0.18 200);
-  --color-chart-3: oklch(0.65 0.20 280);
-  --color-chart-4: oklch(0.70 0.22 60);
-  --color-chart-5: oklch(0.65 0.25 25);
+  /* Chart greys */
+  --color-chart-1: oklch(0.90 0 0);
+  --color-chart-2: oklch(0.70 0 0);
+  --color-chart-3: oklch(0.50 0 0);
+  --color-chart-4: oklch(0.35 0 0);
+  --color-chart-5: oklch(0.20 0 0);
 
-  --radius: 0.25rem;
+  --radius: 0.15rem;
 
-  /* Cyberpunk neon variables */
-  --neon-green: oklch(0.75 0.22 155);
-  --neon-cyan: oklch(0.70 0.18 200);
-  --neon-purple: oklch(0.65 0.20 280);
-  --neon-red: oklch(0.65 0.25 25);
-  --neon-yellow: oklch(0.85 0.18 90);
+  /* Accent variables — all grey */
+  --accent-primary: oklch(0.90 0 0);
+  --accent-dim: oklch(0.55 0 0);
+  --accent-subtle: oklch(0.30 0 0);
 
   --font-mono: "Share Tech Mono", "Courier New", monospace;
-  --font-sans: "Rajdhani", "Share Tech Mono", monospace;
+  --font-sans: "Share Tech Mono", "Courier New", monospace;
 }
 
-/* shadcn/ui compatibility: expose semantic color vars at :root */
+/* shadcn/ui compatibility */
 :root {
-  --background: oklch(0.06 0.01 240);
-  --foreground: oklch(0.92 0.05 160);
-  --card: oklch(0.09 0.015 240);
-  --card-foreground: oklch(0.90 0.04 160);
-  --popover: oklch(0.08 0.015 240);
-  --popover-foreground: oklch(0.90 0.04 160);
-  --primary: oklch(0.75 0.22 155);
-  --primary-foreground: oklch(0.06 0.01 240);
-  --secondary: oklch(0.70 0.18 200);
-  --secondary-foreground: oklch(0.06 0.01 240);
-  --muted: oklch(0.12 0.02 240);
-  --muted-foreground: oklch(0.55 0.05 200);
-  --accent: oklch(0.65 0.20 195);
-  --accent-foreground: oklch(0.06 0.01 240);
-  --destructive: oklch(0.65 0.25 25);
-  --destructive-foreground: oklch(0.98 0.01 0);
-  --border: oklch(0.20 0.05 200);
-  --input: oklch(0.12 0.02 240);
-  --ring: oklch(0.75 0.22 155);
-  --radius: 0.25rem;
+  --background: oklch(0.06 0 0);
+  --foreground: oklch(0.92 0 0);
+  --card: oklch(0.10 0 0);
+  --card-foreground: oklch(0.88 0 0);
+  --popover: oklch(0.09 0 0);
+  --popover-foreground: oklch(0.88 0 0);
+  --primary: oklch(0.95 0 0);
+  --primary-foreground: oklch(0.06 0 0);
+  --secondary: oklch(0.22 0 0);
+  --secondary-foreground: oklch(0.88 0 0);
+  --muted: oklch(0.14 0 0);
+  --muted-foreground: oklch(0.50 0 0);
+  --accent: oklch(0.28 0 0);
+  --accent-foreground: oklch(0.92 0 0);
+  --destructive: oklch(0.60 0.20 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.22 0 0);
+  --input: oklch(0.12 0 0);
+  --ring: oklch(0.60 0 0);
+  --radius: 0.15rem;
 }
 
 /* ============================================================
@@ -101,86 +100,88 @@
 
   body {
     @apply bg-background text-foreground font-mono;
-    background-image:
-      radial-gradient(ellipse at 10% 20%, oklch(0.10 0.05 200 / 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 90% 80%, oklch(0.10 0.05 155 / 0.10) 0%, transparent 50%);
     min-height: 100vh;
   }
 
-  /* Scrollbar cyberpunk */
+  /* Scrollbar monochrome */
   ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
   }
   ::-webkit-scrollbar-track {
-    background: oklch(0.06 0.01 240);
+    background: oklch(0.08 0 0);
   }
   ::-webkit-scrollbar-thumb {
-    background: oklch(0.75 0.22 155 / 0.5);
+    background: oklch(0.35 0 0);
     border-radius: 2px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: oklch(0.75 0.22 155 / 0.9);
+    background: oklch(0.55 0 0);
   }
 
   /* Selection */
   ::selection {
-    background: oklch(0.75 0.22 155 / 0.3);
-    color: oklch(0.92 0.05 160);
+    background: oklch(0.90 0 0 / 0.25);
+    color: oklch(0.98 0 0);
   }
 }
 
 /* ============================================================
-   CYBERPUNK UTILITY CLASSES
+   UTILITY CLASSES — MONOCHROME TERMINAL
    ============================================================ */
 
 @layer utilities {
-  /* Neon glow effects */
+  /* Text accent levels */
+  .text-accent-bright {
+    color: oklch(0.95 0 0);
+  }
+  .text-accent-mid {
+    color: oklch(0.65 0 0);
+  }
+  .text-accent-dim {
+    color: oklch(0.40 0 0);
+  }
+
+  /* Neon classes — remapped to white/grey glow */
   .neon-green {
-    color: var(--neon-green);
-    text-shadow: 0 0 8px oklch(0.75 0.22 155 / 0.8), 0 0 20px oklch(0.75 0.22 155 / 0.4);
+    color: oklch(0.92 0 0);
+    text-shadow: 0 0 8px oklch(0.92 0 0 / 0.5);
   }
-
   .neon-cyan {
-    color: var(--neon-cyan);
-    text-shadow: 0 0 8px oklch(0.70 0.18 200 / 0.8), 0 0 20px oklch(0.70 0.18 200 / 0.4);
+    color: oklch(0.78 0 0);
+    text-shadow: 0 0 8px oklch(0.78 0 0 / 0.4);
   }
-
   .neon-red {
-    color: var(--neon-red);
-    text-shadow: 0 0 8px oklch(0.65 0.25 25 / 0.8), 0 0 20px oklch(0.65 0.25 25 / 0.4);
+    color: oklch(0.60 0.20 25);
+    text-shadow: 0 0 8px oklch(0.60 0.20 25 / 0.5);
   }
-
   .neon-purple {
-    color: var(--neon-purple);
-    text-shadow: 0 0 8px oklch(0.65 0.20 280 / 0.8), 0 0 20px oklch(0.65 0.20 280 / 0.4);
+    color: oklch(0.70 0 0);
+    text-shadow: 0 0 6px oklch(0.70 0 0 / 0.3);
   }
 
-  /* Neon border glow */
+  /* Border glow — grey */
   .border-neon-green {
-    border-color: oklch(0.75 0.22 155 / 0.6);
-    box-shadow: 0 0 8px oklch(0.75 0.22 155 / 0.2), inset 0 0 8px oklch(0.75 0.22 155 / 0.05);
+    border-color: oklch(0.55 0 0);
+    box-shadow: 0 0 6px oklch(0.55 0 0 / 0.15);
   }
-
   .border-neon-cyan {
-    border-color: oklch(0.70 0.18 200 / 0.6);
-    box-shadow: 0 0 8px oklch(0.70 0.18 200 / 0.2), inset 0 0 8px oklch(0.70 0.18 200 / 0.05);
+    border-color: oklch(0.45 0 0);
+    box-shadow: 0 0 6px oklch(0.45 0 0 / 0.12);
   }
-
   .border-neon-red {
-    border-color: oklch(0.65 0.25 25 / 0.6);
-    box-shadow: 0 0 8px oklch(0.65 0.25 25 / 0.2), inset 0 0 8px oklch(0.65 0.25 25 / 0.05);
+    border-color: oklch(0.60 0.20 25 / 0.6);
+    box-shadow: 0 0 6px oklch(0.60 0.20 25 / 0.2);
   }
 
-  /* Cyberpunk card */
+  /* Cyberpunk card — monochrome */
   .cyber-card {
-    background: oklch(0.09 0.015 240);
-    border: 1px solid oklch(0.20 0.05 200);
+    background: oklch(0.10 0 0);
+    border: 1px solid oklch(0.20 0 0);
     border-radius: 2px;
     position: relative;
     overflow: hidden;
   }
-
   .cyber-card::before {
     content: '';
     position: absolute;
@@ -188,33 +189,28 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, oklch(0.75 0.22 155 / 0.6), transparent);
+    background: linear-gradient(90deg, transparent, oklch(0.55 0 0 / 0.5), transparent);
   }
 
   /* HUD corner brackets */
   .hud-bracket {
     position: relative;
   }
-
   .hud-bracket::before,
   .hud-bracket::after {
     content: '';
     position: absolute;
     width: 12px;
     height: 12px;
-    border-color: oklch(0.75 0.22 155 / 0.8);
+    border-color: oklch(0.55 0 0 / 0.7);
     border-style: solid;
   }
-
   .hud-bracket::before {
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     border-width: 2px 0 0 2px;
   }
-
   .hud-bracket::after {
-    bottom: 0;
-    right: 0;
+    bottom: 0; right: 0;
     border-width: 0 2px 2px 0;
   }
 
@@ -222,7 +218,6 @@
   .scanlines {
     position: relative;
   }
-
   .scanlines::after {
     content: '';
     position: absolute;
@@ -231,17 +226,15 @@
       0deg,
       transparent,
       transparent 2px,
-      oklch(0 0 0 / 0.03) 2px,
-      oklch(0 0 0 / 0.03) 4px
+      oklch(0 0 0 / 0.04) 2px,
+      oklch(0 0 0 / 0.04) 4px
     );
     pointer-events: none;
     z-index: 1;
   }
 
   /* Glitch animation */
-  .glitch {
-    position: relative;
-  }
+  .glitch { position: relative; }
 
   @keyframes glitch-1 {
     0%, 100% { clip-path: inset(0 0 95% 0); transform: translate(-2px, 0); }
@@ -250,7 +243,6 @@
     60% { clip-path: inset(80% 0 5% 0); transform: translate(1px, 0); }
     80% { clip-path: inset(10% 0 70% 0); transform: translate(-2px, 0); }
   }
-
   @keyframes glitch-2 {
     0%, 100% { clip-path: inset(50% 0 30% 0); transform: translate(2px, 0); }
     20% { clip-path: inset(10% 0 80% 0); transform: translate(-2px, 0); }
@@ -259,12 +251,11 @@
     80% { clip-path: inset(90% 0 5% 0); transform: translate(2px, 0); }
   }
 
-  /* Pulse neon */
+  /* Pulse — white */
   @keyframes neon-pulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
+    50% { opacity: 0.5; }
   }
-
   .neon-pulse {
     animation: neon-pulse 2s ease-in-out infinite;
   }
@@ -274,14 +265,13 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
   }
-
   .cursor-blink::after {
     content: '█';
     animation: blink 1s step-end infinite;
-    color: oklch(0.75 0.22 155);
+    color: oklch(0.80 0 0);
   }
 
-  /* Terminal text animation */
+  /* Terminal type-in */
   @keyframes type-in {
     from { width: 0; }
     to { width: 100%; }
@@ -294,72 +284,66 @@
     border-radius: 50%;
     display: inline-block;
   }
-
   .status-dot.online {
-    background: oklch(0.75 0.22 155);
-    box-shadow: 0 0 6px oklch(0.75 0.22 155);
+    background: oklch(0.85 0 0);
+    box-shadow: 0 0 5px oklch(0.85 0 0 / 0.6);
     animation: neon-pulse 2s ease-in-out infinite;
   }
-
   .status-dot.offline {
-    background: oklch(0.65 0.25 25);
-    box-shadow: 0 0 6px oklch(0.65 0.25 25);
+    background: oklch(0.60 0.20 25);
+    box-shadow: 0 0 5px oklch(0.60 0.20 25 / 0.5);
   }
-
   .status-dot.warning {
-    background: oklch(0.85 0.18 90);
-    box-shadow: 0 0 6px oklch(0.85 0.18 90);
+    background: oklch(0.65 0 0);
+    box-shadow: 0 0 5px oklch(0.65 0 0 / 0.4);
   }
 
-  /* Grid background */
+  /* Grid background — subtle grey */
   .cyber-grid {
     background-image:
-      linear-gradient(oklch(0.75 0.22 155 / 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, oklch(0.75 0.22 155 / 0.03) 1px, transparent 1px);
+      linear-gradient(oklch(0.90 0 0 / 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.90 0 0 / 0.025) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
-  /* Neon button */
+  /* Terminal button */
   .btn-neon {
     background: transparent;
-    border: 1px solid oklch(0.75 0.22 155 / 0.6);
-    color: oklch(0.75 0.22 155);
+    border: 1px solid oklch(0.40 0 0);
+    color: oklch(0.85 0 0);
     font-family: var(--font-mono);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.18s cubic-bezier(0.23, 1, 0.32, 1);
   }
-
   .btn-neon:hover {
-    background: oklch(0.75 0.22 155 / 0.1);
-    border-color: oklch(0.75 0.22 155);
-    box-shadow: 0 0 12px oklch(0.75 0.22 155 / 0.4), inset 0 0 12px oklch(0.75 0.22 155 / 0.05);
-    color: oklch(0.92 0.05 160);
+    background: oklch(0.90 0 0 / 0.08);
+    border-color: oklch(0.70 0 0);
+    box-shadow: 0 0 10px oklch(0.70 0 0 / 0.15);
+    color: oklch(0.98 0 0);
   }
-
   .btn-neon:active {
     transform: scale(0.97);
   }
 
-  /* Cyber input */
+  /* Terminal input */
   .cyber-input {
-    background: oklch(0.08 0.015 240);
-    border: 1px solid oklch(0.20 0.05 200);
-    color: oklch(0.92 0.05 160);
+    background: oklch(0.09 0 0);
+    border: 1px solid oklch(0.22 0 0);
+    color: oklch(0.92 0 0);
     font-family: var(--font-mono);
-    transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.18s cubic-bezier(0.23, 1, 0.32, 1);
   }
-
   .cyber-input:focus {
-    border-color: oklch(0.75 0.22 155 / 0.8);
-    box-shadow: 0 0 12px oklch(0.75 0.22 155 / 0.2);
+    border-color: oklch(0.60 0 0);
+    box-shadow: 0 0 10px oklch(0.60 0 0 / 0.12);
     outline: none;
   }
 
-  /* Risk level colors */
-  .risk-safe { color: oklch(0.75 0.22 155); }
-  .risk-low { color: oklch(0.85 0.18 90); }
-  .risk-medium { color: oklch(0.80 0.20 60); }
-  .risk-high { color: oklch(0.70 0.22 30); }
-  .risk-critical { color: oklch(0.65 0.25 25); }
+  /* Risk level colors — only red uses color */
+  .risk-safe    { color: oklch(0.80 0 0); }
+  .risk-low     { color: oklch(0.65 0 0); }
+  .risk-medium  { color: oklch(0.75 0.10 60); }
+  .risk-high    { color: oklch(0.65 0.18 30); }
+  .risk-critical{ color: oklch(0.60 0.20 25); }
 }

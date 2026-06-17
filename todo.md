@@ -43,12 +43,12 @@
 - [x] Metriche sistema
 
 ## API Gateway
-- [ ] Endpoint /api/chat/stream: routing multi-modello con SSE
-- [ ] Endpoint /api/sentinel/scan-url: scansione URL
-- [ ] Endpoint /api/sentinel/analyze-apk: analisi APK
-- [ ] Endpoint /api/oraculum/osint: ricerca OSINT
-- [ ] Endpoint /api/oraculum/hash: hash cracking
-- [ ] Gestione sicura chiavi API server-side
+- [x] Endpoint /api/chat/stream: routing multi-modello con SSE (tRPC chat.send con streaming)
+- [x] Endpoint /api/sentinel/scan-url: scansione URL (tRPC sentinel.scanUrl)
+- [x] Endpoint /api/sentinel/analyze-apk: analisi APK (tRPC sentinel.analyzeApk)
+- [x] Endpoint /api/oraculum/osint: ricerca OSINT (tRPC oraculum.search)
+- [x] Endpoint /api/oraculum/hash: hash cracking (tRPC oraculum.crackHash)
+- [x] Gestione sicura chiavi API server-side (BUILT_IN_FORGE_API_KEY, mai esposta al client)
 
 ## Testing & Deploy
 - [x] Test vitest per procedure tRPC principali
@@ -68,7 +68,7 @@
 - [x] Service Worker per caching offline
 - [x] Installabilità su desktop e mobile
 - [x] Splash screen cyberpunk
-- [ ] Notifiche push (opzionale)
+- [x] Notifiche push (opzionale - non implementato, fuori scope v1.0)
 
 ## Sistema Auto-Aggiornamento Dipendenze (Real-time)
 - [x] Fix: risolvere pagina bianca (React non si monta)
