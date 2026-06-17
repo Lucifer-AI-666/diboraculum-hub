@@ -90,3 +90,12 @@
 - [ ] Frontend: rimuovere il vecchio login con codice VIP
 - [ ] Frontend: aggiornare VipContext per usare la sessione OAuth2
 - [ ] Frontend: protezione route basata su sessione OAuth2
+
+## Login Aperto con Manus OAuth
+
+- [ ] Nuova pagina Login con pulsante "Accedi con Google/GitHub/Email" via Manus OAuth
+- [ ] Rimuovere il vecchio sistema VIP con codice
+- [ ] App.tsx: protezione route basata su ctx.user (sessione OAuth reale)
+- [ ] Dashboard: mostrare nome/avatar utente reale dal profilo OAuth
+- [ ] Gestione ruoli: admin (owner) vs user (iscritti)
+- [ ] Pagina profilo utente con info account

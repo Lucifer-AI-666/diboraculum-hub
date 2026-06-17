@@ -4,7 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch, useLocation, Redirect } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import { VipProvider, useVip } from "./contexts/VipContext";
+import { useAuth } from "./_core/hooks/useAuth";
 import VipLogin from "./pages/VipLogin";
 import OrdoAbChao from "./pages/OrdoAbChao";
 import ChatAI from "./pages/ChatAI";
@@ -59,15 +59,14 @@ function PwaInstallBanner() {
 
 // ─── Protected Route ──────────────────────────────────────────────────────────
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated, isLoading } = useVip();
-  const [location] = useLocation();
+  const { isAuthenticated, loading } = useAuth();
 
-  if (isLoading) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center space-y-4">
-          <div className="text-2xl neon-green animate-pulse">◈</div>
-          <div className="text-xs text-muted-foreground tracking-widest">AUTHENTICATING...</div>
+          <div className="text-2xl animate-pulse" style={{ color: "oklch(0.85 0.01 0)" }}>◈</div>
+          <div className="text-xs text-muted-foreground tracking-widest font-mono">AUTHENTICATING...</div>
         </div>
       </div>
     );
@@ -101,11 +100,11 @@ function DashboardRoutes() {
 
 // ─── Router ───────────────────────────────────────────────────────────────────
 function Router() {
-  const { isAuthenticated, isLoading } = useVip();
+  const { isAuthenticated, loading } = useAuth();
   const [location] = useLocation();
 
   // Redirect authenticated users away from login
-  if (!isLoading && isAuthenticated && location === "/") {
+  if (!loading && isAuthenticated && location === "/") {
     return <Redirect to="/dashboard" />;
   }
 
@@ -126,10 +125,8 @@ function AppContent() {
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
-          <VipProvider>
-            <Router />
-            <PwaInstallBanner />
-          </VipProvider>
+          <Router />
+          <PwaInstallBanner />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
