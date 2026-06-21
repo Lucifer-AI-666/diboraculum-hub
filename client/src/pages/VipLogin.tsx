@@ -3,9 +3,42 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
 import { useLocation } from "wouter";
 
+/**
+ * Detect if the app is running as an installed PWA in standalone mode.
+ * In standalone mode, OAuth redirects must open in the system browser
+ * (via window.open) otherwise the OAuth portal opens inside the PWA shell
+ * and the session cookie is lost when the user returns.
+ */
+function isPWAStandalone(): boolean {
+  return (
+    window.matchMedia("(display-mode: standalone)").matches ||
+    // iOS Safari
+    (window.navigator as { standalone?: boolean }).standalone === true
+  );
+}
+
 export default function VipLogin() {
-  const { isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, loading, refresh } = useAuth();
   const [, navigate] = useLocation();
+
+  // When the PWA regains focus (user returns from OAuth in system browser),
+  // re-check authentication state immediately.
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        refresh();
+      }
+    };
+    const handleFocus = () => {
+      refresh();
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("focus", handleFocus);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("focus", handleFocus);
+    };
+  }, [refresh]);
 
   useEffect(() => {
     if (!loading && isAuthenticated) {
@@ -14,7 +47,18 @@ export default function VipLogin() {
   }, [isAuthenticated, loading, navigate]);
 
   const handleLogin = () => {
-    window.location.href = getLoginUrl();
+    const loginUrl = getLoginUrl();
+
+    if (isPWAStandalone()) {
+      // In PWA standalone mode: open OAuth in the system browser so the
+      // redirect back to the app works correctly and the cookie is set.
+      // The visibilitychange / focus listener above will re-check auth when
+      // the user returns to the PWA.
+      window.open(loginUrl, "_blank", "noopener,noreferrer");
+    } else {
+      // Normal browser: navigate in the same tab
+      window.location.href = loginUrl;
+    }
   };
 
   if (loading) {
@@ -82,6 +126,15 @@ export default function VipLogin() {
           <div className="text-center">
             <div className="text-xs font-mono" style={{ color: "oklch(0.40 0.01 0)" }}>
               Supporta Google · GitHub · Email
+            </div>
+          </div>
+
+          {/* PWA hint */}
+          <div className="text-center">
+            <div className="text-xs font-mono" style={{ color: "oklch(0.32 0.01 0)" }}>
+              {isPWAStandalone()
+                ? "Si aprirà il browser — torna qui dopo l'accesso"
+                : "Verrai reindirizzato al portale sicuro"}
             </div>
           </div>
         </div>
