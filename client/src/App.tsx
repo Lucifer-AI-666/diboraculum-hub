@@ -111,6 +111,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={VipLogin} />
+      <Route path="/dashboard" component={DashboardRoutes} />
       <Route path="/dashboard/:rest*" component={DashboardRoutes} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
