@@ -1,5 +1,5 @@
-// Diboraculum Hub — Service Worker v2
-const CACHE_NAME = "dib-hub-v2";
+// Diboraculum Hub — Service Worker v3
+const CACHE_NAME = "dib-hub-v3";
 const STATIC_ASSETS = ["/", "/manifest.json"];
 
 // Routes that must NEVER be intercepted by the SW
@@ -61,12 +61,17 @@ self.addEventListener("fetch", (event) => {
           caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
         }
         return response;
-      }).catch(() => {
+      }).catch(async () => {
         // Offline fallback: return cached index.html for navigation requests
         if (request.mode === "navigate") {
-          return caches.match("/") || new Response("Offline", { status: 503 });
+          const cachedPage = await caches.match("/");
+          if (cachedPage) return cachedPage;
         }
-        return new Response("Offline", { status: 503 });
+        return new Response("Offline", {
+          status: 503,
+          statusText: "Offline",
+          headers: { "Content-Type": "text/plain; charset=utf-8" },
+        });
       });
     })
   );
