@@ -1,5 +1,5 @@
-// Diboraculum Hub — Service Worker v3
-const CACHE_NAME = "dib-hub-v3";
+// Diboraculum Hub — Service Worker v4
+const CACHE_NAME = "dib-hub-v4";
 const STATIC_ASSETS = ["/", "/manifest.json"];
 
 // Routes that must NEVER be intercepted by the SW
@@ -40,6 +40,25 @@ self.addEventListener("fetch", (event) => {
   );
   if (shouldBypass) return;
 
+  // Never interfere with non-GET requests.
+  if (request.method !== "GET") return;
+
+  // Navigation must be network-first so deployments and auth redirects are
+  // never shadowed by an old cached HTML shell.
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request).catch(async () => {
+        const cachedPage = await caches.match("/");
+        return cachedPage || new Response("Offline", {
+          status: 503,
+          statusText: "Offline",
+          headers: { "Content-Type": "text/plain; charset=utf-8" },
+        });
+      })
+    );
+    return;
+  }
+
   // Cache-first for static assets (JS, CSS, images, fonts)
   event.respondWith(
     caches.match(request).then((cached) => {
@@ -62,11 +81,6 @@ self.addEventListener("fetch", (event) => {
         }
         return response;
       }).catch(async () => {
-        // Offline fallback: return cached index.html for navigation requests
-        if (request.mode === "navigate") {
-          const cachedPage = await caches.match("/");
-          if (cachedPage) return cachedPage;
-        }
         return new Response("Offline", {
           status: 503,
           statusText: "Offline",

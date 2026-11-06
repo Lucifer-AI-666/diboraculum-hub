@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /manus-storage/
+
+Sitemap: https://diboraculum.com/sitemap.xml

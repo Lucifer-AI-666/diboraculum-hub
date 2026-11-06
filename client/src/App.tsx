@@ -57,6 +57,46 @@ function PwaInstallBanner() {
   );
 }
 
+// ─── SEO metadata ────────────────────────────────────────────────────────────
+function SeoHead() {
+  const [location] = useLocation();
+
+  useEffect(() => {
+    const isPrivateRoute = location.startsWith("/dashboard");
+    const title = isPrivateRoute
+      ? "Dashboard — Diboraculum Hub"
+      : "Diboraculum Hub — AI, CyberSec e OSINT";
+    const description = isPrivateRoute
+      ? "Area privata del command hub Diboraculum per AI, cybersecurity e OSINT."
+      : "Diboraculum Hub: piattaforma unificata per AI, cybersecurity e OSINT, con Chat AI, Tauros Sentinel, Oraculum e command hub.";
+    const canonicalUrl = `https://diboraculum.com${isPrivateRoute ? location.split("?")[0] : "/"}`;
+
+    document.title = title;
+    const setMeta = (selector: string, content: string) => {
+      const element = document.querySelector<HTMLMetaElement>(selector);
+      if (element) element.content = content;
+    };
+
+    setMeta('meta[name="description"]', description);
+    setMeta('meta[name="robots"]', isPrivateRoute ? "noindex, nofollow" : "index, follow");
+    setMeta('meta[property="og:title"]', title);
+    setMeta('meta[property="og:description"]', description);
+    setMeta('meta[property="og:url"]', canonicalUrl);
+    setMeta('meta[name="twitter:title"]', title);
+    setMeta('meta[name="twitter:description"]', description);
+
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.appendChild(canonical);
+    }
+    canonical.href = canonicalUrl;
+  }, [location]);
+
+  return null;
+}
+
 // ─── Protected Route ──────────────────────────────────────────────────────────
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, loading } = useAuth();
@@ -126,6 +166,7 @@ function AppContent() {
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
+          <SeoHead />
           <Router />
           <PwaInstallBanner />
         </TooltipProvider>
